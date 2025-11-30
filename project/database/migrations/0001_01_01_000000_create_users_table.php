@@ -53,7 +53,7 @@ return new class extends Migration
             $table->timestamp('last_seen_at')->nullable();
             $table->string('avatar_url')->nullable();
             $table->string('socket_id')->nullable();
-            $table->timestamp('password_changed_at')->nullable()->after('password');
+            $table->timestamp('password_changed_at')->nullable();
             
             // New fields to match Flutter pattern
             $table->decimal('rating', 3, 1)->default(0.0);

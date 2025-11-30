@@ -51,6 +51,7 @@ class UserController extends Controller
                     'regex:/^0[0-9]{10}$/',   // Validates Nigerian phone number format
                     'unique:users,phone_number'
                 ],
+                'email' => 'required|email|max:255|unique:users,email',
                 'password' => 'required|min:6|max:20|string',
                 'fullname' => 'required|min:6|max:40|string|regex:/^[a-zA-Z]+\s[a-zA-Z]+$/'
             ]);
@@ -66,6 +67,7 @@ class UserController extends Controller
             $user = User::create([
                 'phone_number' => $request->phone_number,
                 'fullname' => strtolower($request->fullname),
+                'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'promo_code' => $this->GenerateController->GeneratePromoCode(),
                 'created_at' => now(),
