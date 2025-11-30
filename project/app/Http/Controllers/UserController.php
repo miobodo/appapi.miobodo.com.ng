@@ -42,6 +42,7 @@ class UserController extends Controller
     // Store Users
     public function store(Request $request)
     {
+        return response()->json($request->all());
         DB::beginTransaction();
         try {
             // Validate Request
